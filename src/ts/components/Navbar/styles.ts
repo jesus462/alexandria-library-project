@@ -10,7 +10,7 @@ export const Nav = styled.nav`
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.11);
 	position: fixed;
 	top: 0;
-	background-color: white;
+	background-color: #F4F1EA;
 	z-index: 1060;
 `;
 
@@ -24,7 +24,7 @@ export const SearchBar = styled.input`
 	border: none;
 	outline: none;
 	font-size: 20px;
-
+	border-radius: 10px;
 	:active {
 		border: none;
 	}
