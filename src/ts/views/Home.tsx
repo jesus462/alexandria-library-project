@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-function Home() {
+export const Home: FunctionComponent = () => {
   return (
-    <div className="App">
+    <div>
       HELLOOOO
     </div>
   );
-}
-
-export default Home;
+};
