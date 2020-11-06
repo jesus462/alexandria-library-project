@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//style for the whole app
 import "../style/index.scss";
 
 //import your own components
