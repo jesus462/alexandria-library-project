@@ -1,18 +1,27 @@
 import React, { FunctionComponent } from "react";
+import { stringChecker, dateChecker } from "../../utils";
 
 import { Card, Text, Image, Container } from "./styles";
 
-export const BookCard: FunctionComponent = () => {
+interface BookCardProps {
+    book: any;
+}
+
+export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
+    let day = book.original_publication_day;
+    let month = typeof book.original_publication_month === "string" ? book.original_publication_month : (book.original_publication_month - 1);
+    let year = book.original_publication_year;
+    
     return(
         <Card>
-            <Container>
-                <Text bold>Book title</Text>
-                <Text>Book author</Text>
+            <Container header>
+                <Text bold>{stringChecker(book.best_book.title)}</Text>
+                <Text>{book.best_book.author.name}</Text>
             </Container>
-            <Image src="https://edit.org/img/blog/xwdn-editar-portadas-de-libros-gratis.jpg.pagespeed.ic.PmNhyGc59r.jpg"/>
+            <Image src={`${book.best_book.image_url}`} />
             <Container>
-                <Text>Book ratings</Text>
-                <Text>Book publication date</Text>
+                <Text>{book.average_rating}</Text>
+                <Text>{dateChecker(day, month, year)}</Text>
             </Container>
         </Card>
     );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
 import getState from "./flux";
 
-export const Context = React.createContext(null);
+export const Context = React.createContext<null|any>(null);
 
 // This function injects the global store to any view/component that gets passed to it, we will inject 
 // the context to layout.js, in there with react-router-dom we'll be able to pass the store to all the parts 
@@ -23,7 +23,6 @@ const injectContext = (PassedComponent: FunctionComponent) => {
 		);
 		
 		useEffect(() => {
-
 		}, []);
 		return (
 			<Context.Provider value={state}>

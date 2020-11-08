@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-	margin: 15px;
+	margin: 10px;
 	width: 210px;
 	height: 320px;
 	border: 1px solid #a2986a;
@@ -14,7 +14,7 @@ export const Card = styled.div`
 	align-items: center;
 	@media (max-width: 605px) {
 		width: 130px;
-		height: 210px;
+		height: 240px;
 		margin: 10px 10px;
 	}
 `;
@@ -22,8 +22,8 @@ export const Card = styled.div`
 export const Text = styled.p<{bold?: boolean}>`
     text-align: center;
     font-weight: ${({ bold }) => (bold ? "700" : "400")};
-    margin: 5px 0;
-    font-size: 15px;
+    margin: 0;
+    font-size: 14px;
 `;
 
 export const Image = styled.img`
@@ -31,8 +31,8 @@ export const Image = styled.img`
 	width: 80%;
 `;
 
-export const Container = styled.div`
-    height: 25%;
+export const Container = styled.div<{header?: boolean}>`
+    height: ${({ header }) => (header ? "45%" : "15%")};
     width: 100%;
     display: flex;
     flex-direction: column;

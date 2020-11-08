@@ -1,9 +1,16 @@
-import React, { useState, FunctionComponent } from "react";
+import React, { useState, useContext, useEffect, FunctionComponent } from "react";
+import { Context } from "../../store/Context";
 
 import { Nav, Logo, SearchBar, LinkStyledLogo } from "./styles";
 
 export const Navbar: FunctionComponent = () => {
-    const [search, setSearch] = useState("");
+	const { actions } = useContext(Context);
+	const [search, setSearch] = useState("");
+	
+	useEffect(() => {
+		console.log(search);
+		actions.fetchBooks(search);
+	}, [search]);
 	
 	return (
 		<Nav>
