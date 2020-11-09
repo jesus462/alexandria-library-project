@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Container, AuthorImage, DetailsContainer, Divider, Details, Text, BooksList } from "./styles";
 
 export const AuthorDetails: FunctionComponent = () => {
+    
     return (
         <Container>
             <DetailsContainer>

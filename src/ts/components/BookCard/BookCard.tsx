@@ -1,4 +1,5 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
+import { Context } from "../../store/Context";
 import { Link } from "react-router-dom";
 import { stringChecker, dateChecker } from "../../utils";
 
@@ -9,6 +10,8 @@ interface BookCardProps {
 }
 
 export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
+    const { actions } = useContext(Context);
+
     let day = book.original_publication_day;
     let month = typeof book.original_publication_month === "string" ? book.original_publication_month : (book.original_publication_month - 1);
     let year = book.original_publication_year;
@@ -17,7 +20,7 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
         <Card>
             <Container header>
                 <Text bold>{stringChecker(book.best_book.title)}</Text>
-                <Link to="/author">
+                <Link onClick={() => actions.fetchAuthor(book.best_book.author.id)} to="/author">
                 <Text><i>{book.best_book.author.name}</i></Text>
                 </Link>
             </Container>
