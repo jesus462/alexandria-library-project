@@ -7,7 +7,7 @@ export const Nav = styled.nav`
 	align-items: center;
 	justify-content: space-evenly;
 	padding: 2px 12px;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.11);
+	border-bottom: 1px solid #a2986a;
 	position: fixed;
 	top: 0;
 	background-color: #F4F1EA;

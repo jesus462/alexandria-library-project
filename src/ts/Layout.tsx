@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./views/Home";
+import { AuthorDetails } from "./views/AuthorDetails";
 import { Navbar } from "./components";
 import injectContext from "./store/Context";
 
@@ -17,6 +18,9 @@ const Layout: FunctionComponent = () => {
 				<Switch>
 					<Route exact path="/">
 						<Home />
+					</Route>
+					<Route exact path="/author">
+						<AuthorDetails />
 					</Route>
 					<Route>
 						<h1>Not found!</h1>

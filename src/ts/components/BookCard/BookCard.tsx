@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import { stringChecker, dateChecker } from "../../utils";
 
 import { Card, Text, Image, Container } from "./styles";
@@ -16,7 +17,9 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
         <Card>
             <Container header>
                 <Text bold>{stringChecker(book.best_book.title)}</Text>
-                <Text>{book.best_book.author.name}</Text>
+                <Link to="/author">
+                <Text><i>{book.best_book.author.name}</i></Text>
+                </Link>
             </Container>
             <Image src={`${book.best_book.image_url}`} />
             <Container>
