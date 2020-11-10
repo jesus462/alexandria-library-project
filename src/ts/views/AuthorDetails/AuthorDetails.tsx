@@ -1,24 +1,43 @@
-import React, { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
-
-import { Container, AuthorImage, DetailsContainer, Divider, Details, Text, BooksList } from "./styles";
+import React, { FunctionComponent, useContext } from "react";
+import { Context } from "../../store/Context";
+import parse from "html-react-parser";
+import { Loading } from "../../components";
+import { 
+    Container, 
+    AuthorImage, 
+    DetailsContainer, 
+    DividerVertical, 
+    DividerHorizontal, 
+    Details, 
+    Text, 
+    BooksList, 
+    BookImage } from "./styles";
 
 export const AuthorDetails: FunctionComponent = () => {
-    
+    const { store} = useContext(Context);
+
     return (
         <Container>
-            <DetailsContainer>
-                <AuthorImage src="data:image/jpeg;base64,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" />
-                <Divider />
-                <Details>
-                    <Text>name</Text>
-                    <Text>hometown</Text>
-                    <Text>fans count</Text>
-                    <Text>about info</Text>
-                    <Text>number of followers</Text>
-                    <BooksList>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</BooksList>
-                </Details>
-            </DetailsContainer>
+            {store.loading.author ? (
+                <Loading />
+            ) : (
+                <DetailsContainer>
+                    <AuthorImage src={store.author[0].image_url} />
+                    <DividerVertical />
+                    <Details>
+                        <Text header><strong>{store.author[0].name}</strong></Text>
+                        <Text><strong><i>Hometown: {store.author[0].hometown}</i></strong></Text>
+                        <Text><strong><i>Followers: {store.author[0].fans_count}</i></strong></Text>
+                        <DividerHorizontal />
+                        <Text>{parse(store.author[0].about)}</Text>
+                        <BooksList>
+                            {store.author[0].books.book.map((book: any) =>{
+                                return <BookImage key={book.id} src={book.image_url} />;
+                            })}
+                        </BooksList>
+                    </Details>
+                </DetailsContainer>
+            )}
         </Container>
     );
 };

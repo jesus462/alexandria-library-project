@@ -10,7 +10,7 @@ interface BookCardProps {
 }
 
 export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
-    const { actions } = useContext(Context);
+    const { actions, store } = useContext(Context);
 
     let day = book.original_publication_day;
     let month = typeof book.original_publication_month === "string" ? book.original_publication_month : (book.original_publication_month - 1);
@@ -19,8 +19,14 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
     return(
         <Card>
             <Container header>
-                <Text bold>{stringChecker(book.best_book.title)}</Text>
-                <Link onClick={() => actions.fetchAuthor(book.best_book.author.id)} to="/author">
+                <Text bold>{typeof book.best_book.title === "number" ? book.best_book.title : stringChecker(book.best_book.title)}</Text>
+                <Link onClick={() => {
+                        if (store.loading.author === false)  {
+                            actions.setLoading(store.loading.author, "author");
+                        }
+                        actions.fetchAuthor(book.best_book.author.id);
+                    }} 
+                    to="/author">
                 <Text><i>{book.best_book.author.name}</i></Text>
                 </Link>
             </Container>

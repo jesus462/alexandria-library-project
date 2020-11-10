@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useContext } from 'react';
 import { Context } from "../../store/Context";
 import { BookCard } from "../../components";
+import { Loading } from "../../components";
 
 import { Container } from "./styles";
 
@@ -13,7 +14,10 @@ export const Home: FunctionComponent = () => {
 
   return (
     <Container>
-      {store.books.length >= 1 ? mappedCards : "No Match"}
+      {store.loading.books ? (
+        <Loading />
+      ) : (
+        store.books.length >= 1 ? mappedCards : "No Match")}
     </Container>
   );
 };

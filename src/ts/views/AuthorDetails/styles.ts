@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
+    height: 100%;
 	padding-top: 54px;
     display: flex;
     flex-direction: column;
@@ -12,15 +13,19 @@ export const DetailsContainer = styled.div`
     display: flex;
     margin: 15px 0;
     padding: 10px;
-    width: 95%;
+    width: 90%;
     background-color: #F4F1EA;
     border-radius: 15px;
     border: 1px solid #a2986a;
+    @media (max-width: 700px) {
+        flex-direction: column;
+	    align-items: center;
+    }
 `;
 
 export const AuthorImage = styled.img`
-    width: 40%;
-    height: 65%;
+    width: 30%;
+    height: 350px;
     border-radius: 10px;
     @media (max-width: 700px) {
         margin: 10px auto;
@@ -29,18 +34,31 @@ export const AuthorImage = styled.img`
     }
 `;
 
-export const Divider = styled.hr`
+export const DividerVertical = styled.hr`
     background-color: #a2986a;
     width: 1px;
-`
-
-export const Details = styled.div`
-    width: 55%;
+    @media (max-width: 700px) {
+        display: none;
+    }
 `;
 
-export const Text = styled.p`
+export const DividerHorizontal = styled.hr`
+    background-color: #a2986a;
+    height: 1px;
+    width: 95%;
+`;
+
+export const Details = styled.div`
+    width: 65%;
+    @media (max-width: 700px) {
+        width: 80%;
+    }
+`;
+
+export const Text = styled.p<{header?: boolean}>`
     margin: 5px 0;
-    font-size: 14px;
+    font-size: ${({header}) => (header ? "20px" : "12px")};
+    text-align: ${({header}) => (header ? "center" : "justify")};
 `;
 
 export const BooksList = styled.div`
@@ -51,4 +69,10 @@ export const BooksList = styled.div`
     overflow-x: scroll;
     background-color: #a2986a;
     border-radius: 5px;
+    align-items: center;
+`;
+
+export const BookImage = styled.img`
+    margin: 0 5px;
+    height: 95%;
 `;
