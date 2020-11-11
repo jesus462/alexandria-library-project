@@ -11,7 +11,7 @@ export const Nav = styled.nav`
 	position: fixed;
 	top: 0;
 	background-color: #F4F1EA;
-	z-index: 1060;
+	z-index: 100;
 `;
 
 export const Logo = styled.img`

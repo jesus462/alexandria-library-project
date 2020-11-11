@@ -56,8 +56,8 @@ export const Details = styled.div`
 `;
 
 export const Text = styled.p<{header?: boolean}>`
-    margin: 5px 0;
-    font-size: ${({header}) => (header ? "20px" : "12px")};
+    margin: ${({header}) => (header ? "10px 0" : "5px 0")};
+    font-size: ${({header}) => (header ? "20px" : "14px")};
     text-align: ${({header}) => (header ? "center" : "justify")};
 `;
 
@@ -75,4 +75,23 @@ export const BooksList = styled.div`
 export const BookImage = styled.img`
     margin: 0 5px;
     height: 95%;
+    border-radius: 15px;
+    :hover,
+	:active {
+		color: #595959;
+		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+		cursor: pointer;
+	}
+`;
+
+export const Title = styled.p`
+    margin: 10px 0 0 0;
+    font-size: 20px;
+    text-align: center;
+`;
+
+export const Subtitle = styled.p`
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    text-align: center;
 `;

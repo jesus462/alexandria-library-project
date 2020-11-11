@@ -28,7 +28,8 @@ export const Text = styled.p<{bold?: boolean}>`
 
 export const Image = styled.img`
 	height: 40%;
-	width: 80%;
+	width: 60%;
+	border-radius: 15px;
 `;
 
 export const Container = styled.div<{header?: boolean}>`
