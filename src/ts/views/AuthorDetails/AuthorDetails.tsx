@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import { Loading, BookDetailModal } from "../../components";
 import { useModal } from "../../hooks";
 
+
 import { 
     Container, 
     AuthorImage, 
@@ -16,6 +17,7 @@ import {
     BookImage,
     Subtitle,
     Title,
+    LinkBack,
 } from "./styles";
 
 export const AuthorDetails: FunctionComponent = () => {
@@ -29,6 +31,12 @@ export const AuthorDetails: FunctionComponent = () => {
                 <Loading />
             ) : (
                 <DetailsContainer>
+                    <LinkBack absolute={store.author.length > 0} to="/">
+                        <i className="fas fa-chevron-left" />
+                        {store.author.length !== 0 ? "" : "Back, No author selected"}
+				    </LinkBack>
+                    {store.author.length > 0 ? (
+                    <>
                     <AuthorImage src={store.author[0].image_url} />
                     <DividerVertical />
                     <Details>
@@ -49,6 +57,7 @@ export const AuthorDetails: FunctionComponent = () => {
                         </BooksList>
                         <BookDetailModal book={bookModal} show={show} hide={toggle} />
                     </Details>
+                    </>) : null}
                 </DetailsContainer>
             )}
         </Container>

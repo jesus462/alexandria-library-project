@@ -3,7 +3,7 @@ import { Context } from "../../store/Context";
 import { BookCard } from "../../components";
 import { Loading } from "../../components";
 
-import { Container } from "./styles";
+import { Container, NoMatchStyled } from "./styles";
 
 export const Home: FunctionComponent = () => {
   const { store } = useContext(Context);
@@ -17,7 +17,7 @@ export const Home: FunctionComponent = () => {
       {store.loading.books ? (
         <Loading />
       ) : (
-        store.books.length >= 1 ? mappedCards : "No Match")}
+        store.books.length >= 1 ? mappedCards : <NoMatchStyled>No Match Found</NoMatchStyled>)}
     </Container>
   );
 };

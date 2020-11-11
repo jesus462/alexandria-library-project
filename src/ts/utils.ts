@@ -22,7 +22,7 @@ export const dateChecker = (day: number, month: number, year: number) => {
     if (typeof day === "string" && typeof month === "string" && typeof year === "number") {
         return `${year}`;
     } else if (typeof day === "string" && typeof month === "string" && typeof year === "string") {
-        return `No date registered`;
+        return `No date`;
     } else if (typeof day === "string" && typeof month === "number" && typeof year === "number") {
         return `${sortedDate[1]}, ${sortedDate[3]}`;
     }else {

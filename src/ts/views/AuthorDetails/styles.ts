@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -49,7 +50,7 @@ export const DividerHorizontal = styled.hr`
 `;
 
 export const Details = styled.div`
-    width: 65%;
+    width: 60%;
     @media (max-width: 700px) {
         width: 80%;
     }
@@ -94,4 +95,23 @@ export const Subtitle = styled.p`
     margin: 0 0 10px 0;
     font-size: 14px;
     text-align: center;
+`;
+
+export const LinkBack = styled(Link)<{absolute?: boolean}>`
+color: black;
+font-size: 25px;
+margin: ${({absolute}) => (absolute ? "0 5px" : "0 auto")};
+text-align: center;
+text-decoration: none;
+@media (max-width: 700px) {
+    position: ${({absolute}) => (absolute ? "absolute" : "static")};
+    font-size: 20px;
+    left: 5.5%;
+    margin-top: 10px;
+}
+:hover,
+:active {
+    text-decoration: underline;
+    opacity: 0.8;
+}
 `;

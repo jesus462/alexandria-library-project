@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }: {getStore: any, getActions
 			author: [],
 			loading: {
 				books: false,
-				author: true,
+				author: false,
 			}
 		},
 		actions: {
