@@ -37,4 +37,4 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
             </Container>
         </Card>
     );
-}
+};
