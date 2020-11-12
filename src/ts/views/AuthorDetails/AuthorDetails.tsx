@@ -4,7 +4,6 @@ import parse from "html-react-parser";
 import { Loading, BookDetailModal } from "../../components";
 import { useModal } from "../../hooks";
 
-
 import { 
     Container, 
     AuthorImage, 
@@ -37,7 +36,7 @@ export const AuthorDetails: FunctionComponent = () => {
 				    </LinkBack>
                     {store.author.length > 0 ? (
                     <>
-                    <AuthorImage src={store.author[0].image_url} />
+                    <AuthorImage alt="author image" src={store.author[0].image_url} />
                     <DividerVertical />
                     <Details>
                         <Text header><strong>{store.author[0].name}</strong></Text>
@@ -49,7 +48,7 @@ export const AuthorDetails: FunctionComponent = () => {
                         <Subtitle><i>(Click the book for details)</i></Subtitle>
                         <BooksList>
                             {store.author[0].books.book.map((book: any) =>{
-                                return <BookImage onClick={() =>{ 
+                                return <BookImage alt="book image" onClick={() =>{ 
                                     toggle();
                                     setBookModal([book]);
                                 }} key={book.id} src={book.image_url} />;

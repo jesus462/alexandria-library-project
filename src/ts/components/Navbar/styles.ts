@@ -20,11 +20,12 @@ export const Logo = styled.img`
 `;
 
 export const SearchBar = styled.input`
-	width: 100%;
+	width: 95%;
 	border: none;
 	outline: none;
 	font-size: 20px;
 	border-radius: 10px;
+	margin-right: 20px;
 	:active {
 		border: none;
 	}
@@ -37,4 +38,9 @@ export const SearchBar = styled.input`
 export const LinkStyledLogo = styled(Link)`
 	display: flex;
 	align-items: center;
+`;
+
+export const LinkStyled = styled(Link)`
+	width: 100%;
+	cursor: default;
 `;

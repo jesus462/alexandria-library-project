@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
 import parse from "html-react-parser";
+import { getRating } from "../../utils";
 
 import {
     ModalOverlay,
@@ -29,7 +30,7 @@ export const BookDetailModal: FunctionComponent<BookDetailModalProps> = ({ book,
             <ModalWrapper>
                 <Modal>
                     <Header>
-                        <BookImage src={book[0].small_image_url} />
+                        <BookImage alt="book image" src={book[0].small_image_url} />
                         <Title>{book[0].title}</Title>
                         <Button onClick={hide}>X</Button>
                     </Header>
@@ -40,8 +41,8 @@ export const BookDetailModal: FunctionComponent<BookDetailModalProps> = ({ book,
                         <Text><i><strong>Format:</strong> {book[0].format}</i></Text>
                         <Text><i><strong>Year of publication:</strong> {book[0].publication_year}</i></Text>
                         <Text><i><strong>Ratings count:</strong> {book[0].ratings_count}</i></Text>
-                        <Text><i><strong>Average rating:</strong> {book[0].average_rating}</i></Text>
-                        <Text><i><strong>Goodreads Link:</strong> <a href={book[0].link} target="_blank">Click Here</a></i></Text>
+                        <Text><i><strong>Average rating:</strong> {book[0].average_rating} {getRating(book[0].average_rating)}</i></Text>
+                        <Text><i><strong>Goodreads Link:</strong> <a href={book[0].link} target="_blank" rel="noreferrer">Click Here</a></i></Text>
                         <DividerHorizontal />
                         <Text justify>{parse(`${parse(book[0].description)}`)}</Text>
                     </Main>

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useContext } from "react";
 import { Context } from "../../store/Context";
 import { Link } from "react-router-dom";
-import { stringChecker, dateChecker } from "../../utils";
+import { stringChecker, dateChecker, getRating } from "../../utils";
 
 import { Card, Text, Image, Container } from "./styles";
 
@@ -15,7 +15,7 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
     let day = book.original_publication_day;
     let month = typeof book.original_publication_month === "string" ? book.original_publication_month : (book.original_publication_month - 1);
     let year = book.original_publication_year;
-    
+
     return(
         <Card>
             <Container header>
@@ -26,13 +26,13 @@ export const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
                         }
                         actions.fetchAuthor(book.best_book.author.id);
                     }} 
-                    to="/author">
+                    to={"/author"}>
                 <Text><i>{book.best_book.author.name}</i></Text>
                 </Link>
             </Container>
-            <Image src={`${book.best_book.image_url}`} />
+            <Image alt="book image" src={`${book.best_book.image_url}`} />
             <Container>
-                <Text>{book.average_rating}</Text>
+                <Text>{book.average_rating} {getRating(book.average_rating)}</Text>
                 <Text>{dateChecker(day, month, year)}</Text>
             </Container>
         </Card>

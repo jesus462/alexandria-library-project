@@ -10,7 +10,8 @@ const getState = ({ getStore, getActions, setStore }: {getStore: any, getActions
 			loading: {
 				books: false,
 				author: false,
-			}
+			},
+			searching: false,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -101,6 +102,17 @@ const getState = ({ getStore, getActions, setStore }: {getStore: any, getActions
 						loading: { ...store.loading, author:!value },
 					});
 				}
+			},
+			setSearching: (search: string = "") => {
+				if (search !== "") {
+					setStore({
+						searching: true,
+					});
+				} else {
+					setStore({
+						searching: false,
+					});
+				};
 			}
 		}
 	};

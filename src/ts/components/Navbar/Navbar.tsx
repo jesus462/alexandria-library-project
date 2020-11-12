@@ -1,17 +1,19 @@
-import React, { useState, useContext, useEffect, FunctionComponent } from "react";
+import React, { useContext, FunctionComponent } from "react";
 import { Context } from "../../store/Context";
+import { useKey, useSearch } from "../../hooks"
 
-import { Nav, Logo, SearchBar, LinkStyledLogo } from "./styles";
+import { Nav, Logo, SearchBar, LinkStyledLogo, LinkStyled } from "./styles";
 
 export const Navbar: FunctionComponent = () => {
 	const { actions } = useContext(Context);
-	const [search, setSearch] = useState("");
-	
-	useEffect(() => {
-		console.log(search);
+	const { search, handleSearch } = useSearch();
+
+	const handleEnter = () => {
+		actions.setSearching(search);
 		actions.fetchBooks(search);
-	}, [search]);
-	
+	}
+	useKey(13, handleEnter);
+
 	return (
 		<Nav>
 			<LinkStyledLogo to="/">
@@ -20,13 +22,14 @@ export const Navbar: FunctionComponent = () => {
 					alt="Alexandria logo"
 				/>
 			</LinkStyledLogo>
-				<SearchBar
-					value={search}
-					onChange={(e)=>setSearch(e.target.value)}
-					type="text"
-					className="fas fa-search"
-					placeholder="Search"
-				/>
+				<LinkStyled to="/">
+					<SearchBar
+						value={search}
+						onChange={(e)=>handleSearch(e)}
+						type="text"
+						placeholder="Search"
+					/>
+				</LinkStyled>
 		</Nav>
 	);
 };
