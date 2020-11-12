@@ -76,9 +76,7 @@ const getState = ({ getStore, getActions, setStore }: {getStore: any, getActions
 					if (response.ok) {
 						let toText = await response.text();
 						let xmlToJSON =  parse(toText);
-						console.log(xmlToJSON);
 						let results =  xmlToJSON.GoodreadsResponse.author;
-						console.log(results);
 						setStore({
 							author: [results],
 							loading: { ...store.loading, author: false }
